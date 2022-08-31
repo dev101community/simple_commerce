@@ -1,10 +1,25 @@
-from flask import Flask,request, render_template, send_from_directory # Add render_template
+from flask import Flask,jsonify, request, render_template, send_from_directory # Add render_template
 import fix_index
+from server.controllers import EntitiesResource, EntityResource
 from server.providers.log_provider import logger
+from flask_restful import Resource, Api
+
+from werkzeug.http import HTTP_STATUS_CODES
+from werkzeug.exceptions import HTTPException
+
 
 fix_index.fixIndexHTMLdoc()
 
+errors = {
+    'Conflict': {
+        'message': "A user with that username already exists.",
+        'status': 409,
+    },
+}
+
 app = Flask(__name__)
+api = Api(app, errors=errors)
+
 
 
 @app.route('/<path:path>', methods=['GET'])
@@ -21,13 +36,15 @@ def hello_world():
   else:
     return send_from_directory('./static', 'index.html')
 
-@app.route("/api/")
-def my_api():
-    return "hi"
 
 @app.errorhandler(500)
 def server_error(e):
-  return 'An internal error occurred [main.py] %s' % e, 500       
+  return f'An internal error occurred [main.py] {str(e)}', 500   
+
+api.add_resource(EntitiesResource, "/entity/<string:entity>")
+api.add_resource(EntityResource, "/entity/<string:entity>/<string:id>")
+
+
 
 if __name__ == '__main__':
   logger.info("Application started in DEV mode")
