@@ -30,6 +30,6 @@ class BaseModel:
     def insert(self, data):
         existing = self.find("id", data["id"])
         if existing is not None:
-            raise DataNotFoundException("Can't update! Data exists.")
+            raise DataNotFoundException(f"Can't update {self.entity.upper()}! Data exists.")
         self.data.append(data)
         return data
