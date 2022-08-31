@@ -7,15 +7,15 @@ class BaseDao:
         self.entity = entity_name
         self.data = data
 
-    def get(self, id = None):
+    def read(self, id = None):
         if id is not None:
-            return BaseModel(self.entity).get("id", id)
-        return BaseModel(self.entity).get()
+            return BaseModel(self.entity).select("id", id)
+        return BaseModel(self.entity).select()
 
     def delete(self):
         pass
 
-    def post(self, data):
-        return BaseModel(self.entity).post(data)
+    def save(self, data):
+        return BaseModel(self.entity).insert(data)
 
     
