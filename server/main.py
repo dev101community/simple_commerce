@@ -7,12 +7,9 @@ from flask_cors import CORS
 from werkzeug.http import HTTP_STATUS_CODES
 from werkzeug.exceptions import HTTPException
 
-
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
-
-
 
 @app.route('/')
 def hello_world():

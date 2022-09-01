@@ -1,4 +1,5 @@
 from server.providers.errors import DataNotFoundException
+from server.providers.log_provider import logger
 
 data = [
     {
@@ -9,10 +10,12 @@ data = [
 
 class BaseModel:
     def __init__(self, entity_name) -> None:
+        self.logger = logger
         self.entity = entity_name
         self.data = data
 
     def find(self, search_key, search_value):
+        self.logger.info("Finding")
         for d in self.data:
             if d[search_key] == int(search_value):
                 return d
