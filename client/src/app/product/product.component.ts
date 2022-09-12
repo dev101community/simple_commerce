@@ -8,13 +8,13 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  totalAngularPackages: any;
+  data: any;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:5000/product/1').subscribe(data => {
-        this.totalAngularPackages = data.name;
+    this.http.get<any>('http://localhost:5000/product').subscribe(data => {
+        this.data = data;
     }) 
   }
 

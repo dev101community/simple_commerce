@@ -1,5 +1,5 @@
-from server.models import BaseModel
-from server.providers.errors import DataNotFoundException
+from models import BaseModel
+from providers.errors import DataNotFoundException
 
 
 class BaseDao:

@@ -1,2 +1,6 @@
 <p>product works!</p>
-{{totalAngularPackages}}
+<ul>
+    <li *ngFor="let person of data; let i = index">
+      {{ person.fields.name }}
+    </li>
+  </ul>

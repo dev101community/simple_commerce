@@ -2,8 +2,8 @@ from http.client import HTTPException
 from flask_restful import Resource, Api
 from flask import Response, abort, request
 
-from server.daos import BaseDao
-from server.providers.errors import APIException
+from daos import BaseDao
+from providers.errors import APIException
 
 
 class EntitiesResource(Resource):
