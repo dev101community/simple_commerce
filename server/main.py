@@ -28,5 +28,5 @@ api.add_resource(EntityResource, "/<string:entity>/<string:id>")
 
 if __name__ == '__main__':
   logger.info("Application started in DEV mode")
-  app.run()
+  app.run(host='0.0.0.0')
 

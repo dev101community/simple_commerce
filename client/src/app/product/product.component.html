@@ -1,6 +1,21 @@
-<p>product works!</p>
-<ul>
-    <li *ngFor="let person of data; let i = index">
-      {{ person.fields.name }}
-    </li>
-  </ul>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col-sm-4" *ngFor="let product of data; let i = index">
+    <div class="card">
+      <!-- <img src="{{ product.fields.image.url }}" class="card-img-top" alt="..."> -->
+      <span *ngFor="let image of product.fields.image; let i = index">
+        <img src="{{ image.url }}" class="card-img-top"  />
+      </span>
+      <div class="card-body">
+        <h5 class="card-title">{{ product.fields.name }}</h5>
+        <p class="card-text">{{ product.fields.description }}</p>
+        <p class="card-text">Rs. {{ product.fields.price }}</p>
+        
+        <div class="input-group mb-3">
+          <button class="btn btn-outline-secondary" (click)="reduceQty(i)" ng-init="count=0" type="button" id="reduce-button-{{ i }}">-</button>
+          <input type="text" value=0 class="form-control" id="qty-{{ i }}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+          <button class="btn btn-outline-secondary" type="button" (click)="increaseQty(i)" id="add-button-{{ i }}">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

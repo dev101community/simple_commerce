@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -16,6 +16,16 @@ export class ProductComponent implements OnInit {
     this.http.get<any>('http://localhost:5000/product').subscribe(data => {
         this.data = data;
     }) 
+  }
+
+  reduceQty(data: number): void {
+    const currentValue = Number((<HTMLInputElement>document.getElementById("qty-"+data)).value);
+    (<HTMLInputElement>document.getElementById("qty-"+data)).value = String(currentValue - 1);
+  }
+
+  increaseQty(data: number): void {
+    const currentValue = Number((<HTMLInputElement>document.getElementById("qty-"+data)).value);
+    (<HTMLInputElement>document.getElementById("qty-"+data)).value = String(currentValue + 1);
   }
 
 }
