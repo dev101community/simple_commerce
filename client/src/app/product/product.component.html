@@ -11,9 +11,9 @@
         <p class="card-text">Rs. {{ product.fields.price }}</p>
         
         <div class="input-group mb-3">
-          <button class="btn btn-outline-secondary" (click)="reduceQty(i)" ng-init="count=0" type="button" id="reduce-button-{{ i }}">-</button>
+          <button class="btn btn-outline-secondary" (click)="reduceQty(i, product)" ng-init="count=0" type="button" id="reduce-button-{{ i }}">-</button>
           <input type="text" value=0 class="form-control" id="qty-{{ i }}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-          <button class="btn btn-outline-secondary" type="button" (click)="increaseQty(i)" id="add-button-{{ i }}">+</button>
+          <button class="btn btn-outline-secondary" type="button" (click)="increaseQty(i, product)" id="add-button-{{ i }}">+</button>
         </div>
       </div>
     </div>
