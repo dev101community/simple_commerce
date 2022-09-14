@@ -28,19 +28,16 @@ export class ProductComponent implements OnInit {
 
   reduceQty(data: number, product: any): void {
     let currentValue = Number((<HTMLInputElement>document.getElementById("qty-"+data)).value) - 1;
-    if (currentValue < 0) {
-      currentValue = 0
+    if (currentValue >= 0) {
+      this.total_value = this.total_value - product.fields.price;
+      this.eventService.broadcastMessage(this.total_value);
+      (<HTMLInputElement>document.getElementById("qty-"+data)).value = String(currentValue);
     }
-    this.total_value = this.total_value - product.fields.price;
-    alert(this.total_value);
-    this.eventService.broadcastMessage(this.total_value);
-    (<HTMLInputElement>document.getElementById("qty-"+data)).value = String(currentValue);
   }
 
   increaseQty(data: number, product: any): void {
     const currentValue = Number((<HTMLInputElement>document.getElementById("qty-"+data)).value) + 1;
     this.total_value = this.total_value + product.fields.price;
-    alert(this.total_value);
     this.eventService.broadcastMessage(this.total_value);
     (<HTMLInputElement>document.getElementById("qty-"+data)).value = String(currentValue);
   }

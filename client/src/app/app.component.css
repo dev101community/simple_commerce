@@ -1,0 +1,38 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto Slab:400,300,700");
+
+
+
+* {
+  /* font: 500 20px/32px Roboto, 'Ubuntu-Regular', sans-serif !important */
+  font-family: 'Roboto Slab', sans-serif !important;
+}
+
+/* Color of the links BEFORE scroll */
+.navbar-scroll .nav-link,
+.navbar-scroll .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #fff;
+}
+
+/* Color of the links AFTER scroll */
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-toggler-icon,
+.navbar-scrolled .navbar-brand {
+  color: #fff;
+}
+
+/* Color of the navbar AFTER scroll */
+.navbar-scroll,
+.navbar-scrolled {
+  background-color: #cbbcb1;
+}
+
+.mask-custom {
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, .15);
+}
+
+.navbar-brand {
+  font-size: 1.75rem;
+  /* letter-spacing: 3px; */
+}
